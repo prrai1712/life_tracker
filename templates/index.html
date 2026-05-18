@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ app_title }}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+</head>
+
+<body class="dash-body">
+  {% include 'components/navbar.html' %}
+
+  {% include 'components/dashboard_filters.html' %}
+
+  {% include 'components/dashboard_pagination.html' %}
+
+  {% if table_type == 'old' %}
+    {% include 'components/table_old_feed.html' %}
+  {% else %}
+    {% include 'components/table_new_feed.html' %}
+  {% endif %}
+
+  {% include 'components/dashboard_pagination.html' %}
+
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>

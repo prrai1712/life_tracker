@@ -1,0 +1,58 @@
+<form class="dash-form" method="get" action="{{ url_for('home.dashboard') }}">
+  <div class="form-grid">
+    <label class="field">
+      API Type
+      <select name="api_type">
+        <option value="old" {% if api_type == 'old' %}selected{% endif %}>Old API</option>
+        <option value="new" {% if api_type == 'new' %}selected{% endif %}>New API</option>
+      </select>
+    </label>
+
+    <label class="field">
+      Table
+      <select name="table_type_value">
+        {% for key, label in table_options %}
+        <option value="{{ key }}" {% if table_type_value == key %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label class="field">
+      Page
+      <input type="number" name="page" value="{{ page }}" min="0" />
+    </label>
+
+    <label class="field">
+      Size
+      <input type="number" name="size" value="{{ size }}" min="1" />
+    </label>
+
+    <label class="field">
+      Duration
+      <input type="number" name="duration" value="{{ duration }}" min="1" placeholder="hours" />
+    </label>
+
+    <label class="field">
+      Match Filter
+      <select name="matched_filter">
+        <option value="true,false" {% if matched_filter == 'true,false' %}selected{% endif %}>All</option>
+        <option value="true" {% if matched_filter == 'true' %}selected{% endif %}>True Only</option>
+        <option value="false" {% if matched_filter == 'false' %}selected{% endif %}>False Only</option>
+      </select>
+    </label>
+
+    <label class="field wheel-field">
+      Wheel Results
+      <select name="wheel_results" multiple size="10" id="wheel-select" class="wheel-dropdown">
+        <option value="ALL">Select All</option>
+        {% for item in all_wheel_results %}
+        <option value="{{ item }}" {% if item in selected_wheel_results %}selected{% endif %}>{{ item }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit">Fetch Data</button>
+  </div>
+</form>

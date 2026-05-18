@@ -1,0 +1,871 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.dash-body,
+body.analysis-body {
+  margin: 0;
+  padding: clamp(18px, 3vw, 32px);
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  background: linear-gradient(135deg, #0f172a 0%, #111827 40%, #020617 100%);
+
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+h1 {
+
+  margin: 0 0 0.25rem;
+
+
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+
+
+
+  letter-spacing: 0.02em;
+
+
+}
+
+.analysis-body h1 {
+  margin-top: 1.5rem;
+
+
+
+  font-size: 2.35rem;
+
+
+
+  font-weight: 700;
+
+
+
+}
+
+.subtitle {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+
+
+.page-summary-stat {
+  margin: 0 0 1.5rem;
+
+
+  padding: 0.85rem 1.1rem;
+
+
+
+  border-radius: 14px;
+
+
+
+  border: 1px solid rgba(148, 163, 184, 0.25);
+
+
+  background: rgba(255, 255, 255, 0.06);
+
+
+  font-size: 1.05rem;
+
+
+
+  color: #facc15;
+
+
+
+}
+
+
+
+
+.page-summary-stat strong {
+
+
+
+  color: #e2e8f0;
+
+
+  margin-right: 0.5rem;
+
+
+
+}
+
+
+
+
+.hint-inline {
+
+
+
+  display: block;
+
+
+  margin-top: 0.35rem;
+
+
+  font-size: 0.82rem;
+
+
+  font-weight: 400;
+
+
+
+  color: #94a3b8;
+
+
+}
+
+.top-bar-nav {
+  display: flex;
+
+
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 1rem;
+
+
+
+  margin-bottom: 1.25rem;
+
+
+
+}
+
+.nav-links {
+  display: flex;
+
+  gap: 0.5rem;
+
+
+
+  align-items: center;
+
+
+  flex-wrap: wrap;
+
+
+}
+
+.btn-analysis {
+
+
+  padding: 0.65rem 1.35rem;
+
+
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
+
+
+  color: white;
+
+
+  text-decoration: none;
+
+
+  background: linear-gradient(135deg, #2563eb, #6366f1);
+
+
+  transition: transform 140ms ease, box-shadow 160ms;
+
+
+}
+
+.btn-analysis:hover {
+  transform: translateY(-1px);
+
+
+
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+
+
+
+}
+
+
+
+
+
+.ghost-link {
+  padding: 0.5rem 0.95rem;
+
+
+
+  border-radius: 999px;
+
+
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+
+
+  color: #e2e8f0;
+
+
+
+  text-decoration: none;
+
+
+
+  font-size: 0.85rem;
+
+
+
+}
+
+.dash-form {
+  padding: clamp(18px, 2.5vw, 26px);
+
+  margin-bottom: 1.35rem;
+
+
+
+  border-radius: 20px;
+
+
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+
+
+  background: rgba(255, 255, 255, 0.06);
+
+
+
+  backdrop-filter: blur(10px);
+
+
+}
+
+
+
+
+
+
+
+.form-grid {
+  display: grid;
+
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+
+  gap: 1rem;
+
+
+}
+
+
+
+
+
+
+
+.field {
+
+
+  display: flex;
+
+
+  flex-direction: column;
+
+
+  gap: 0.55rem;
+
+
+
+  font-size: 0.9rem;
+
+
+
+  color: #cbd5e1;
+
+
+}
+
+
+
+
+
+
+
+input,
+
+
+
+
+select {
+
+
+  padding: 0.75rem 0.9rem;
+
+
+
+  border-radius: 12px;
+
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+
+  background: rgba(255, 255, 255, 0.08);
+
+
+
+  color: inherit;
+
+
+  font-size: 1rem;
+
+
+
+}
+
+
+
+
+
+
+
+select option {
+
+
+  background: #111827;
+
+
+  color: white;
+
+
+}
+
+
+
+
+.wheel-dropdown {
+
+
+  height: 180px;
+
+
+}
+
+
+
+
+.form-actions {
+
+
+  margin-top: 1rem;
+
+
+
+
+
+  text-align: center;
+
+
+
+}
+
+
+
+
+
+
+
+button[type='submit'] {
+  cursor: pointer;
+  border: none;
+
+  padding: 0.75rem 1.75rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  transition:
+    transform 150ms ease,
+    filter 150ms;
+
+
+}
+
+
+
+
+
+
+
+button[type='submit']:hover {
+
+
+
+
+
+
+  transform: translateY(-1px);
+
+
+
+
+
+}
+
+
+
+
+.pagination {
+
+
+
+
+
+
+  display: flex;
+
+
+
+
+
+  justify-content: center;
+
+
+
+
+
+  align-items: center;
+
+
+
+
+
+  gap: 0.95rem;
+
+
+
+
+
+  margin: 1.35rem 0;
+
+
+
+
+
+}
+
+
+
+
+.pagination a {
+
+
+  text-decoration: none;
+
+
+
+
+
+  padding: 0.55rem 1.05rem;
+
+
+
+
+
+  border-radius: 12px;
+
+
+
+
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+
+
+
+
+  color: inherit;
+
+
+
+
+
+  background: rgba(255, 255, 255, 0.08);
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+.pagination a:hover {
+
+
+
+
+
+  background: #2563eb;
+
+
+
+
+
+}
+
+
+
+
+.page-number {
+
+
+
+
+
+
+  font-weight: 700;
+
+
+
+
+
+}
+
+
+
+
+.table-wrapper {
+
+
+
+
+
+
+  overflow-x: auto;
+
+
+
+
+
+  border-radius: 20px;
+
+
+
+
+
+  margin-bottom: 0.75rem;
+
+
+
+
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+
+
+
+
+  background: rgba(255, 255, 255, 0.04);
+
+
+
+
+
+}
+
+
+
+
+table {
+
+
+  width: 100%;
+
+
+  border-collapse: collapse;
+
+
+
+  min-width: 960px;
+
+
+
+
+
+}
+
+
+
+
+th {
+
+
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+
+
+
+
+
+  color: white;
+
+
+
+  padding: 0.95rem;
+
+
+
+
+
+  font-size: 0.875rem;
+
+
+
+  white-space: nowrap;
+
+
+
+
+
+}
+
+
+
+
+td {
+
+
+  padding: 0.82rem;
+
+
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+
+
+
+
+  text-align: center;
+
+
+
+
+
+  color: #f8fafc;
+
+
+
+
+
+}
+
+
+
+
+tr:hover td {
+
+
+  background: rgba(255, 255, 255, 0.05);
+
+
+
+
+
+}
+
+
+
+
+.winner-name {
+
+
+  font-weight: 700;
+
+
+
+
+
+  color: #93c5fd;
+
+
+
+
+
+}
+
+
+
+
+.amount {
+  margin-top: 0.35rem;
+  display: block;
+  color: #facc15;
+  font-weight: 700;
+}
+
+.amount-cell {
+  margin-top: 0;
+  color: #facc15;
+  font-weight: 700;
+}
+
+
+
+
+.badge {
+
+
+
+
+
+  padding: 0.35rem 0.85rem;
+
+
+
+  border-radius: 999px;
+
+
+
+
+
+  font-size: 0.85rem;
+
+
+
+  font-weight: 700;
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+.badge-true {
+
+
+
+
+
+
+  background: rgba(34, 197, 94, 0.2);
+
+
+
+  color: #4ade80;
+
+
+
+
+
+}
+
+
+
+
+
+
+.badge-false {
+
+
+  background: rgba(239, 68, 68, 0.2);
+
+
+
+
+
+  color: #f87171;
+
+
+
+}
+
+
+.analysis-top {
+  display: flex;
+  justify-content: center;
+
+
+
+}
+
+.btn-back {
+
+
+  text-decoration: none;
+
+
+
+
+
+  color: white;
+
+
+
+
+
+  padding: 0.7rem 1.4rem;
+
+
+
+  border-radius: 12px;
+
+
+
+
+
+  font-weight: 700;
+
+
+
+
+
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+
+
+
+
+
+}
+
+
+
+
+
+.player {
+  color: #93c5fd;
+
+
+
+
+
+}
+

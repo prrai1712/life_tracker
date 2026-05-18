@@ -1,0 +1,7 @@
+<section class="pagination" aria-label="pages">
+  {% if current_page > 0 %}
+  <a href="{{ prev_url }}">← Prev</a>
+  {% endif %}
+  <div class="page-number">Page {{ current_page + 1 }}</div>
+  <a href="{{ next_url }}">Next →</a>
+</section>

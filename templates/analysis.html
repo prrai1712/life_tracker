@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Analysis Dashboard</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+</head>
+
+
+
+<body class="analysis-body">
+
+  <div class="analysis-top">
+
+    <a class="btn-back" href="{{ url_for('home.dashboard') }}?{{ serialize_query(filter_bundle) }}">← Back To Dashboard</a>
+
+  </div>
+
+  <h1>Player Analysis</h1>
+
+  <p class="subtitle">Totals from winners returned on this Crazy Time page slice.</p>
+
+  <p class="page-summary-stat">
+
+    <strong>Avg. per player won (this page):</strong>
+
+    ₹{{ "{:,.2f}".format(page_avg_per_player_won) }}
+
+    <span class="hint-inline">average of total pool ÷ winners per round on this fetch</span>
+
+  </p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Player Name</th>
+          <th>Total Bet</th>
+
+          <th>Total Win</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        {% for name, stats in players %}
+
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td class="player">{{ name }}</td>
+            <td class="amount-cell">₹{{ "{:,.2f}".format(stats.total_bet) }}</td>
+
+
+            <td class="amount-cell">₹{{ "{:,.2f}".format(stats.total_win) }}</td>
+
+
+
+
+          </tr>
+
+        {% endfor %}
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,12 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<nav class="top-bar-nav">
+  <h1>{{ app_title }}</h1>
+  <div class="nav-links">
+    <a class="btn-analysis" href="{{ url_for('analysis.analysis_page') }}?{{ serialize_query(filter_bundle) }}">Analysis</a>
+    <a class="ghost-link" href="{{ url_for('api.games_endpoint') }}?{{ serialize_query(filter_bundle) }}" target="_blank" rel="noreferrer">/api/games</a>
+    <a class="ghost-link" href="{{ url_for('api.analysis_endpoint') }}?{{ serialize_query(filter_bundle) }}" target="_blank" rel="noreferrer">/api/analysis</a>
+  </div>
+</nav>

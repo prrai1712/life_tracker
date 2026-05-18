@@ -1,0 +1,41 @@
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th><th>Top Slot</th><th>Top Slot Multiplier</th><th>Wheel Result</th><th>Max Multiplier</th>
+        <th>Matched</th><th>Started At</th><th>Settled At</th><th>Total Winners</th>
+        <th>Total Amount</th><th>Per Player Won</th>
+        <th>Top Winner 1</th><th>Ratio 1</th><th>Top Winner 2</th><th>Ratio 2</th><th>Top Winner 3</th><th>Ratio 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row.index }}</td>
+        <td>{{ row.top_slot }}</td>
+        <td>{{ row.top_slot_multiplier }}x</td>
+        <td>{{ row.wheel_result }}</td>
+        <td>{{ row.max_multiplier }}x</td>
+        <td>
+          {% if row.is_matched == 'True' %}
+          <span class="badge badge-true">True</span>
+          {% else %}
+          <span class="badge badge-false">False</span>
+          {% endif %}
+        </td>
+        <td>{{ row.started_at }}</td>
+        <td>{{ row.settled_at }}</td>
+        <td>{{ row.total_winners }}</td>
+        <td>₹{{ row.total_amount }}</td>
+        <td>₹{{ row.per_player_won }}</td>
+        <td>{% if row.winners | length > 0 %}<span class="winner-name">{{ row.winners[0].screen_name }}</span><span class="amount">₹{{ row.winners[0].winnings }}</span>{% endif %}</td>
+        <td>{% if row.winners | length > 0 %}₹{{ row.winners[0].ratio }}{% endif %}</td>
+        <td>{% if row.winners | length > 1 %}<span class="winner-name">{{ row.winners[1].screen_name }}</span><span class="amount">₹{{ row.winners[1].winnings }}</span>{% endif %}</td>
+        <td>{% if row.winners | length > 1 %}₹{{ row.winners[1].ratio }}{% endif %}</td>
+        <td>{% if row.winners | length > 2 %}<span class="winner-name">{{ row.winners[2].screen_name }}</span><span class="amount">₹{{ row.winners[2].winnings }}</span>{% endif %}</td>
+        <td>{% if row.winners | length > 2 %}₹{{ row.winners[2].ratio }}{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
